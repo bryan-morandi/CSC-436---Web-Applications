@@ -1,0 +1,14 @@
+
+#reg-row {
+    display: flex;
+}
+
+#reg-row-item {
+    flex-basis: 250px;
+    margin: 5px; 
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+  }
