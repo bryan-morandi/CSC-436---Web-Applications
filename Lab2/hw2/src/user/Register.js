@@ -9,7 +9,7 @@ export default function Register({ dispatch }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "REGISTER", username });
+        dispatch({ type: "REGISTER", payload: {username: username} });
       }}
     >
       <div class="card border-primary mb-3" style={{ "max-width": "35rem" }}>

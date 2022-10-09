@@ -1,7 +1,7 @@
 export default function Todo({ todo, dispatch }) {
   return (
     <div class="d-flex justify-content-center">
-      <div class="card border-secondary mb-3" style={{ width: "22rem" }}>
+      <div class="card border-secondary mb-3" style={{ width: "22rem"}}>
         <div class="card-header">
           <h5>Todo By:&nbsp;&nbsp;&nbsp;{todo.author}</h5>
         </div>

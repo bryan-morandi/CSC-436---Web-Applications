@@ -9,7 +9,7 @@ export default function Login({ dispatch }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "LOGIN", username });
+        dispatch({ type: "LOGIN", payload: {username: username} });
       }}
     >
       <div class="card border-primary mb-3" style={{ "max-width": "35rem" }}>
