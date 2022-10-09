@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import UserBar from "./user/UserBar";
 import appReducer from "./Reducers";
 import TodoList from "./todos/TodoList";
@@ -26,7 +26,9 @@ const intialTodos = [
   },
 ];
 
-function App() {
+function App({title}) {
+  useEffect(() => {
+    document.title = title; });
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
     todos: intialTodos,

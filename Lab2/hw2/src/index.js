@@ -9,7 +9,7 @@ import './site.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App title='Todo App'/>
   </React.StrictMode>
 );
 
