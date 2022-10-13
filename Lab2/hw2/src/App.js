@@ -1,9 +1,9 @@
 import React, { useReducer, useEffect } from "react";
-import UserBar from "./user/UserBar";
+import UserBar from "./components/user/UserBar";
 import appReducer from "./Reducers";
-import TodoList from "./todos/TodoList";
+import TodoList from "./components/todos/TodoList";
 import { v4 as uuidv4 } from "uuid";
-import CreateTodo from "./todos/CreateTodo";
+import CreateTodo from "./components/todos/CreateTodo";
 
 const intialTodos = [
   {

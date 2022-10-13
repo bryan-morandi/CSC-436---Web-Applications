@@ -1,9 +1,18 @@
 export default function Todo({ todo, dispatch }) {
   return (
     <div class="d-flex justify-content-center">
-      <div class="card border-secondary mb-3" style={{ width: "22rem"}}>
-        <div class="card-header">
+      <div class="card border-secondary mb-3" style={{ width: "22rem" }}>
+        <div class="card-header d-flex justify-content-between">
           <h5>Todo By:&nbsp;&nbsp;&nbsp;{todo.author}</h5>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onClick={() =>
+              dispatch({ type: "DELETE_TODO", payload: { id: todo.id } })
+            }
+          >
+            Delete
+          </button>
         </div>
         <div class="card-body">
           <h4 class="card-title">{todo.title}</h4>
