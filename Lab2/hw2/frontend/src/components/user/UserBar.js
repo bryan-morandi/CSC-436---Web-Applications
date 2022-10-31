@@ -1,13 +1,17 @@
+import React, { useContext } from "react";
 import Login from "./Login";
-import Logout from "./Logout";
 import Register from "./Register";
+import { StateContext } from "../../context";
 
-export default function UserBar({ user, dispatch }) {
-  if (user) {
+const Logout = React.lazy(() => import('./Logout'))
+
+export default function UserBar() {
+  const { state } = useContext(StateContext);
+  if (state.user) {
     return (
       <div class="form-group">
         <br />
-        <Logout user={user} dispatch={dispatch} />
+        <Logout />
         <br />
       </div>
     );
@@ -16,9 +20,9 @@ export default function UserBar({ user, dispatch }) {
       <div class="form-group">
         <br />
         <h4>Login</h4>
-        <Login dispatch={dispatch} />
+        <Login />
         <h4>Register New User</h4>
-        <Register dispatch={dispatch} />
+        <Register />
         <br />
       </div>
     );

@@ -1,14 +1,35 @@
-export default function Todo({ todo, dispatch }) {
+import { useContext } from "react";
+import { useResource } from "react-request-hook";
+import { StateContext } from "../../context";
+
+export default function Todo({todo}) {
+  const { dispatch } = useContext(StateContext);
+
+  // eslint-disable-next-line
+  const [deleteTodo, deleteAction] = useResource((id) => ({
+    url: "/todos/" + id,
+    method: "delete",
+  }));
+
+  // eslint-disable-next-line
+  const [toggleTodo, toggleAction] = useResource(({id, complete, dateCompleted}) => ({
+    url: "/todos/" + id,
+    method: "patch",
+    data: { id, complete, dateCompleted },
+  }));
+
   return (
     <div class="d-flex justify-content-center">
       <div class="card border-secondary mb-3" style={{ width: "22rem" }}>
         <div class="card-header d-flex justify-content-between">
-          <h5>Todo By:&nbsp;&nbsp;&nbsp;{todo.author}</h5>
+          <h5>By: &nbsp;&nbsp;{todo.author}</h5>
           <button
             type="button"
             class="btn btn-danger"
-            onClick={() =>
-              dispatch({ type: "DELETE_TODO", payload: { id: todo.id } })
+            onClick={() => {
+              deleteAction(todo.id);
+              dispatch({ type: "DELETE_TODO", payload: { id : todo.id }});
+            }
             }
           >
             Delete
@@ -24,9 +45,11 @@ export default function Todo({ todo, dispatch }) {
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  check={todo.complete}
-                  onChange={() =>
-                    dispatch({ type: "TOGGLE_TODO", payload: { id: todo.id } })
+                  checked={todo.complete}
+                  onChange={() =>{
+                    toggleAction({id: todo.id, complete : !todo.complete, dateCompleted : new Date(Date.now()).toLocaleString()});
+                    dispatch({ type: "TOGGLE_TODO", payload: { id : todo.id }});
+                  }
                   }
                 />
                 <label class="form-check-label">

@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useResource } from "react-request-hook";
+import { StateContext } from "../../context";
 
-export default function Register({ dispatch }) {
+export default function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
+
+  const { dispatch } = useContext(StateContext);
+
+  const [user, register] = useResource((username, password) => ({
+    url: "/users",
+    method: "post",
+    data: { email: username, password },
+  }));
+
+  useEffect(() => {
+    if (user && user.data && user.data.user.email) {
+      dispatch({ type: "REGISTER", payload : { username: user.data.user.email} });
+    }
+  }, [user]);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "REGISTER", payload: {username: username} });
+        register(username, password);
       }}
     >
       <div class="card border-primary mb-3" style={{ "max-width": "35rem" }}>

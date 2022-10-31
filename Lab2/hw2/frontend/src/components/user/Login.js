@@ -1,15 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useResource } from "react-request-hook";
+import { StateContext } from "../../context";
 
-export default function Login({ dispatch }) {
+export default function Login() {
   const [username, setUsername] = useState("");
+  const [loginFailed, setLoginFailed] = useState(false);
   const [password, setPassword] = useState("");
 
-  //function handleUsername (evt) { setUsername(evt.target.value) }
+  const { dispatch } = useContext(StateContext);
+
+  const [user, login] = useResource((username, password) => ({
+    url: "/login",
+    method: "post",
+    data: { email: username, password },
+  }));
+
+  useEffect(() => {
+    if (user?.data?.user) {
+      setLoginFailed(false);
+      dispatch({ type: "LOGIN", payload: { username: user.data.user.email } });
+    } else if (user && user.error) {
+      setLoginFailed(true);
+    }
+    // eslint-disable-next-line 
+  }, [user]);
+
   return (
+    <>
+    {loginFailed && <span style={{ color: "red" }}>Invalid username or password</span>}
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        dispatch({ type: "LOGIN", payload: {username: username} });
+        login(username, password);
       }}
     >
       <div class="card border-primary mb-3" style={{ "max-width": "35rem" }}>
@@ -57,5 +79,6 @@ export default function Login({ dispatch }) {
         </div>
       </div>
     </form>
+    </>
   );
 }

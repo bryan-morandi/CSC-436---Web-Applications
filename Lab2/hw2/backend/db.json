@@ -1,0 +1,47 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Todo 1",
+      "description": "Todo 1 description",
+      "author": "Bryan",
+      "dateCreated": "10/30/2022, 4:17:21 PM",
+      "complete": false,
+      "dateCompleted": "10/31/2022, 1:19:52 PM"
+    },
+    {
+      "title": "Some old todo",
+      "description": "Some description",
+      "author": "Bryan",
+      "dateCreated": "10/30/2022, 4:17:21 PM",
+      "id": 2,
+      "complete": false,
+      "dateCompleted": "10/31/2022, 1:19:50 PM"
+    },
+    {
+      "title": "finish hw",
+      "description": "",
+      "author": "test@test.com",
+      "dateCreated": "10/31/2022, 1:20:10 PM",
+      "complete": false,
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "email": "bryan@test.com",
+      "password": "$2a$10$0FxDWPUD/DPCZ8JBQ.GucuPAjGCA3aOkdRT4Fu7ROgOWvaW5vlQHy",
+      "id": 1
+    },
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$TAweaN.DBiC6nbl6N59hrupe50hm2upJxginmqlQtc.pJyOR1MTou",
+      "id": 2
+    },
+    {
+      "email": "bryan.morandi@gmail.com",
+      "password": "$2a$10$TVGZ.1DOSbk4Ua6iAQ/FaeB1awmIWy.0jMEEgG9A6iLHVEhyFYysK",
+      "id": 3
+    }
+  ]
+}

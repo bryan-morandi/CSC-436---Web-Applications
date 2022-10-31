@@ -1,25 +1,45 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useResource } from "react-request-hook";
 
-export default function CreateTodo({ user, todos, dispatch }) {
+import { StateContext } from "../../context";
+
+export default function CreateTodo() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  // eslint-disable-next-line
+  const [dateCreated, setDateCreated] = useState(new Date(Date.now()).toLocaleString());
+  // eslint-disable-next-line
+  const [complete, setComplete] = useState(false);
+
+  const { state, dispatch } = useContext(StateContext);
+  const { user } = state;
+  
+// eslint-disable-next-line
+  const [todo, createTodo] = useResource(({title, description, author, dateCreated, complete }) => ({
+    url: "/todos",
+    method: "post",
+    data: { title, description, author, dateCreated, complete },
+  }));
+
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
+
         dispatch({
           type: "CREATE_TODO",
           payload: {
             title,
             description,
             author: user,
-            dateCreated: new Date(Date.now()).toLocaleString(),
-            complete: false,
+            dateCreated: dateCreated,
+            complete: complete,
             id: uuidv4(),
           },
         });
+        createTodo({title, description, author: user, dateCreated, complete });
         //reset the form on submit
         setTitle("");
         setDescription("");
