@@ -42,6 +42,11 @@
       "email": "bryan.morandi@gmail.com",
       "password": "$2a$10$TVGZ.1DOSbk4Ua6iAQ/FaeB1awmIWy.0jMEEgG9A6iLHVEhyFYysK",
       "id": 3
+    },
+    {
+      "email": "test1@test.com",
+      "password": "$2a$10$CKkTLRPTS4MGq2Vmdz3BjuQSMzO2b2KliusN7SV2MHZAyNnCfqg2e",
+      "id": 4
     }
   ]
 }
