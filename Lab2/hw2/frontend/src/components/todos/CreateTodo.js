@@ -1,5 +1,4 @@
-import { useState, useContext } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { useState, useContext, useEffect } from "react"
 import { useResource } from "react-request-hook";
 
 import { StateContext } from "../../context";
@@ -11,6 +10,8 @@ export default function CreateTodo() {
   const [dateCreated, setDateCreated] = useState(new Date(Date.now()).toLocaleString());
   // eslint-disable-next-line
   const [complete, setComplete] = useState(false);
+  // eslint-disable-next-line
+  const [error, setError] = useState(false);
 
   const { state, dispatch } = useContext(StateContext);
   const { user } = state;
@@ -22,23 +23,32 @@ export default function CreateTodo() {
     data: { title, description, author, dateCreated, complete },
   }));
 
+  useEffect(() => {
+    if (todo?.error) {
+      setError(true);
+    }
+    if(todo?.isLoading === false && todo?.data) {
+      dispatch({
+        type: "CREATE_TODO",
+        payload: {
+          title: todo.data.title,
+          description : todo.data.description,
+          author: todo.data.author,
+          dateCreated: todo.data.dateCreated,
+          complete: todo.data.complete,
+          id: todo.data.id,
+        },
+      });
+    }
+    // eslint-disable-next-line
+  }, [todo]);
+
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
 
-        dispatch({
-          type: "CREATE_TODO",
-          payload: {
-            title,
-            description,
-            author: user,
-            dateCreated: dateCreated,
-            complete: complete,
-            id: uuidv4(),
-          },
-        });
         createTodo({title, description, author: user, dateCreated, complete });
         //reset the form on submit
         setTitle("");

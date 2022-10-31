@@ -1,30 +1,30 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "Todo 1",
-      "description": "Todo 1 description",
-      "author": "Bryan",
-      "dateCreated": "10/30/2022, 4:17:21 PM",
-      "complete": false,
-      "dateCompleted": "10/31/2022, 1:19:52 PM"
-    },
-    {
-      "title": "Some old todo",
-      "description": "Some description",
-      "author": "Bryan",
-      "dateCreated": "10/30/2022, 4:17:21 PM",
-      "id": 2,
-      "complete": false,
-      "dateCompleted": "10/31/2022, 1:19:50 PM"
-    },
-    {
       "title": "finish hw",
       "description": "",
       "author": "test@test.com",
-      "dateCreated": "10/31/2022, 1:20:10 PM",
+      "dateCreated": "10/31/2022, 2:58:49 PM",
       "complete": false,
-      "id": 3
+      "id": 1
+    },
+    {
+      "title": "Feed rabbits",
+      "description": "fresh greens",
+      "author": "test@test.com",
+      "dateCreated": "10/31/2022, 2:58:49 PM",
+      "complete": true,
+      "id": 2,
+      "dateCompleted": "10/31/2022, 3:00:11 PM"
+    },
+    {
+      "title": "do laundry",
+      "description": "",
+      "author": "test@test.com",
+      "dateCreated": "10/31/2022, 2:58:49 PM",
+      "complete": true,
+      "id": 3,
+      "dateCompleted": "10/31/2022, 3:00:04 PM"
     }
   ],
   "users": [
