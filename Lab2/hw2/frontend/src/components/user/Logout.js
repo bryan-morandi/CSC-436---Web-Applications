@@ -10,11 +10,12 @@ export default function Logout() {
       onSubmit={(e) => {
         e.preventDefault();
         dispatch({ type: "LOGOUT" });
+        dispatch({ type: "CLEAR_TODOS" });
       }}
     >
       <div class="card border-success mb-3" style={{ width: "20rem" }}>
         <h5 style={{ margin: "5px" }}>
-          Logged in as:&nbsp;&nbsp; <b>{user}</b>
+          Logged in as:&nbsp;&nbsp; <b>{user.username}</b>
         </h5>
 
         <div class="d-flex justify-content-center">

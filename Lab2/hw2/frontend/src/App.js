@@ -7,9 +7,10 @@ import TodoList from "./components/todos/TodoList";
 import CreateTodo from "./components/todos/CreateTodo";
 import { StateContext } from "./context";
 
-function App({title}) {
+function App({ title }) {
   useEffect(() => {
-    document.title = title; });
+    document.title = title;
+  });
   const [state, dispatch] = useReducer(appReducer, {
     user: "",
     todos: [],
@@ -21,35 +22,37 @@ function App({title}) {
   //   .then((todos) => dispatch({ type: "FETCH_TODOS", payload: { todos } }));
   // }, []);
 
-  const[todos, getTodos] = useResource(() => ({
-    url: "/todos",
+  const [todos, getTodos] = useResource(() => ({
+    url: "/todo",
     method: "get",
+    headers: { Authorization: `${state?.user?.access_token}` },
   }));
 
- // eslint-disable-next-line
-  useEffect(getTodos, []);
+  useEffect(() => {
+    getTodos();
+  }, [state?.user?.access_token]);
 
   useEffect(() => {
-    if (todos && todos.data) {
-      dispatch({ type: "FETCH_TODOS", payload: { todos: todos.data.reverse() } });
+    if (todos && todos.isLoading === false && todos.data) {
+      dispatch({ type: "FETCH_TODOS", payload: {todos: todos.data.todos.reverse()}});
     }
   }, [todos]);
 
   return (
     <div class="container">
       <div class="row">
-      <StateContext.Provider value={{ state, dispatch }}>
-        <div class="d-flex justify-content-center">
-          <UserBar />
-        </div>
-        <br />
-        {state.user && (
+        <StateContext.Provider value={{ state, dispatch }}>
           <div class="d-flex justify-content-center">
-            <CreateTodo />
+            <UserBar />
           </div>
-        )}
+          <br />
+          {state.user && (
+            <div class="d-flex justify-content-center">
+              <CreateTodo />
+            </div>
+          )}
 
-        <TodoList />
+          <TodoList />
         </StateContext.Provider>
       </div>
     </div>

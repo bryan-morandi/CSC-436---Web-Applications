@@ -8,9 +8,12 @@ export default function TodoList() {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Todos</h1>
-      {todos.map((todo) => (
-        <Todo {...todo} key={todo.id} todo={todo}  />
-      ))}
+      
+      <div>
+{todos.length === 0 && <h3 style={{ textAlign: "center" }}>No todos found.</h3>}
+{todos.length > 0 && todos.map((todo) => <Todo {...todo} key={todo._id} todo={todo} />)}
+</div>
+
     </div>
   );
 }
