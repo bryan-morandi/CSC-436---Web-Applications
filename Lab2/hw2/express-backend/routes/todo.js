@@ -3,21 +3,7 @@ const jwt = require("jsonwebtoken");
 const Todo = require("../models/Todo");
 const User = require("../models/User");
 
-const privateKey = `-----BEGIN RSA PRIVATE KEY-----
-MIICWwIBAAKBgHdapLnd1y0c3UhMD6smiSLQ0m5+Xn6u3/ms0sQZAHe4XSxutNPc
-kCcC2CSIaYTLpbhtcnNMKkb6J9dyb09GIpa24OtOJ/vNA/2Zq1yTB+5Aj0CcAtkM
-ze0fvYH+kpdieeK71oHg7FtG1QIuUsvU0u9LOeM6ZvZ7nO8YoLGR/9LFAgMBAAEC
-gYBYAKuoqBt6FehK4FpFNbqzwwkFk4OVINfgPj+Be3XO0E9S7aXC+MQJH53DAhnb
-YlSksX5L6QLbJqOtxaCw8OOa8pdEHLnDlT16Nx1ioU2xsG8fp5tlC3VaMtSvk8Xy
-DJchl//VwMMLwOFOfyv6FnpIrT8IlFrUROpM/2f4sqC+2QJBAO6CHyX1aQFOS8+C
-DzeAUIkabpKmqdCiEJ0eMj2wUMwvTbdq7lBuFSOfVuhv+fA0si9mHNYROhDZgL0L
-w8RS9dMCQQCAG3V0EAe5LCU8b9aepq1Vdspvhx1IFtolfjVxMm6q1yyJ7XrJ7X49
-12HX0Qiowv0abh8vqtjYqx1bJGc5xj4HAkB6wrbNjtcROP+EOukiJAVPzC8FhIr7
-O69Zb2Vkow+zSNWzhnJLK53ty+GrmZcHr9fW1bQZ6pv8eDbvFtMYharJAkApYrWL
-DTKxi6Vr5OV803PjzECRzyCSjW9j9WXmb9h4sJLe7C1i1qqV5+LgCdO2UWfbBgBl
-MdhkBsOxEg2XCIg5AkEA6qP4VRSInEV2gK4NzRP3YidQcoWwfBfPlNHBh4kmiJhA
-Zj0+ZFmipDNo64VTai98rnc/OuSC93cKVJeoXyW0bQ==
------END RSA PRIVATE KEY-----`;
+const privateKey = ``;
 
 const router = express.Router();
 
