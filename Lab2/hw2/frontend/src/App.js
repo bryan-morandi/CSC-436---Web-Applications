@@ -29,12 +29,18 @@ function App({ title }) {
   }));
 
   useEffect(() => {
-    getTodos();
+    if (state?.user?.access_token) {
+      getTodos();
+    }
+    // eslint-disable-next-line
   }, [state?.user?.access_token]);
 
   useEffect(() => {
     if (todos && todos.isLoading === false && todos.data) {
-      dispatch({ type: "FETCH_TODOS", payload: {todos: todos.data.todos.reverse()}});
+      dispatch({
+        type: "FETCH_TODOS",
+        payload: { todos: todos.data.todos.reverse() },
+      });
     }
   }, [todos]);
 
